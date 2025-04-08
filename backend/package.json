@@ -12,13 +12,17 @@
   "description": "",
   "dependencies": {
     "@deepgram/sdk": "^3.11.2",
+    "@google/genai": "^0.7.0",
     "@prisma/client": "^6.5.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
     "express": "^4.21.2",
     "prisma": "^6.5.0",
+    "svix": "^1.63.1",
     "typescript": "^5.8.2"
   }
 }

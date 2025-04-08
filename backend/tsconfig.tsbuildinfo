@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/middleware.ts","./src/transcribe.ts"],"version":"5.8.2"}
+{"root":["./src/airesponsegen.ts","./src/contractdetails.ts","./src/handler.ts","./src/index.ts","./src/middleware.ts","./src/prismaclient.ts","./src/quizgenerations.ts","./src/texttospeech.ts","./src/transcribe.ts","./src/web3provider.ts"],"version":"5.8.2"}

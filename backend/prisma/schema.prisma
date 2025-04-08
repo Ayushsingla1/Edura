@@ -12,12 +12,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-model educator {
-  userId  String    @id
-  courses Courses[]
+model User {
+  id        String      @id
+  email     String?
+  purchases Purchases[]
+  courses   Courses[]
+  payout    BigInt     @default(0)
 }
 
+model Purchases {
+  id       String  @id @default(uuid())
+  userId   String
+  user     User    @relation(references: [id], fields: [userId])
+  courseId Int
+  course   Courses @relation(references: [courseId], fields: [courseId])
+  amount   BigInt
+}
 model Lecture {
   id            String   @id @default(uuid())
   url           String
@@ -26,12 +36,16 @@ model Lecture {
   createdAt     DateTime @default(now())
   description   String
   educatorId    String
-  transcription String
+  transcription String   @default("")
+  name          String
 }
-
 model Courses {
-  courseId   Int       @id
-  educatorId String
-  owner      educator  @relation(references: [userId], fields: [educatorId])
-  lectures   Lecture[]
+  courseId    Int     @id @default(autoincrement())
+  name        String
+  educatorId  String
+  educatorName String
+  createAt    DateTime @default(now())
+  owner       User    @relation(references: [id], fields: [educatorId])
+  lectures    Lecture[]
+  purchases   Purchases[]
 }
