@@ -48,7 +48,7 @@ export default function HomePage() {
           >
             <motion.div variants={fadeIn}>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 mb-4">
-                Edu-Chain
+                Edura
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
                 The future of decentralized education powered by blockchain and AI
