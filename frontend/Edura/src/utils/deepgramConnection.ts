@@ -42,7 +42,7 @@ export const connectToDeepgram = (setTranscript : any,deepgramSocket : any) => {
 
 export const getAIResponseAudio = async (transcript : string,setIsTeacherSpeaking : any,setChatHistory : any) => {
     try {
-        const response = await fetch(`${process.env.VITE_BACKEND_URL}/api/v1/speech`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/speech`, {
           method: 'POST',
           body: JSON.stringify({ question: transcript }),
           headers: {

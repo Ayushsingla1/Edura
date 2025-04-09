@@ -17,7 +17,7 @@ export default function CourseLecturesPage() {
   const [activeTab, setActiveTab] = useState("lectures");
   const { data, isLoading: lecturesLoading, error } = useSWR(
     "/get-course-lectures",
-    () => axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/get-course-lectures`, { params: { courseId: id } }).then(res => res.data)
+    () => axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-course-lectures`, { params: { courseId: id } }).then(res => res.data)
   );
 
   const progress = 50;

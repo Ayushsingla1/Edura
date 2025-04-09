@@ -138,7 +138,7 @@ export default function LecturePage() {
       setNotesLoading(true);
       const fxn = async () => {
         try {
-          const res = await axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/get-notes`, { params: { id: lectureId } });
+          const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-notes`, { params: { id: lectureId } });
           console.log(res.data);
           setNotes(res.data);
         } catch (error) {
@@ -155,7 +155,7 @@ export default function LecturePage() {
       if (notes) {
         const fxn = async () => {
           try {
-            const res = await axios.post(`${process.env.VITE_BACKEND_URL}/api/v1/get-quiz`, { transcript: notes });
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-quiz`, { transcript: notes });
             console.log(res.data);
             setQuiz(res.data.questions);
           } catch (e) {
@@ -170,9 +170,9 @@ export default function LecturePage() {
       else {
         const fxn = async () => {
           try {
-            const res = await axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/get-notes`, { params: { id: lectureId } });
+            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-notes`, { params: { id: lectureId } });
             console.log(res.data);
-            const res2 = await axios.post(`${process.env.VITE_BACKEND_URL}/api/v1/get-quiz`, { transcript: res.data });
+            const res2 = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-quiz`, { transcript: res.data });
             setNotes(res.data);
             setQuiz(res2.data.questions);
           } catch (error) {
@@ -191,7 +191,7 @@ export default function LecturePage() {
     const myfxn = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/get-lecture`, { params: { id: lectureId } });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-lecture`, { params: { id: lectureId } });
         console.log(res.data);
         setLecture(res.data.lecture);
         if (res.data.lecture.transcription.length != 0) setNotes(res.data.lecture.transcription);
