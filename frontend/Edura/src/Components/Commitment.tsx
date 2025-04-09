@@ -67,7 +67,7 @@ const CommitMent = () => {
 
 
     const formatDeadlineDate = (dateString : string) => {
-        const date = new Date(dateString);
+        const date = new Date(parseInt(String(dateString)));
         return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
@@ -87,8 +87,8 @@ const CommitMent = () => {
                         Commitment Contract
                     </h2>
                     
-                    {//@ts-ignore
-                    (!data.name || data.finished) && (
+                    {
+                    !(data as any)?.finished && (
                         <Dialog open={showCommitmentDialog} onOpenChange={setShowCommitmentDialog}>
                             <DialogTrigger asChild>
                                 <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
@@ -171,7 +171,7 @@ const CommitMent = () => {
                     )}
                 </div>
 
-                {!(data as any)?.finished ? (
+                {(data as any)?.finished ? (
                     <Card className="bg-gray-900 border-purple-900/30">
                         <CardHeader>
                             <CardTitle className="text-lg font-semibold flex items-center">
@@ -192,7 +192,7 @@ const CommitMent = () => {
                                     <h4 className="text-sm font-medium text-gray-400">Amount Staked</h4>
                                     <p className="text-white mt-1 flex items-center">
                                         <DollarSign className="h-4 w-4 mr-1 text-green-500" />
-                                        {(data as any)?.lockedAmount} EDU
+                                        {((data as any)?.lockedAmount)} EDU
                                     </p>
                                 </div>
                                 <div>
