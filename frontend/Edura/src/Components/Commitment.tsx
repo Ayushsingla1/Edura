@@ -50,7 +50,7 @@ const CommitMent = () => {
     const handleVerifyCompletion = async () => {
         setVerificationPending(true);
         try {
-            const result = await axios.get('http://localhost:3000/api/v1/verify',{params : {userAddress : address}});
+            const result = await axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/verify`,{params : {userAddress : address}});
             if(result.status === 200){
                 console.log("Successfully verified")
             }

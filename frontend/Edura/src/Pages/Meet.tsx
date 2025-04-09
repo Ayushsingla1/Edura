@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Mic, MicOff, Send, Volume2, VolumeX, Sparkles, AlignLeft, MessageCircle, Brain, RefreshCw, Download, X, Maximize, Minimize, Share } from "lucide-react"
+import { Mic, MicOff, Send, Volume2, VolumeX, Sparkles, AlignLeft, MessageCircle, Brain, Download, X, Maximize, Minimize, Share } from "lucide-react"
 import { Button } from "@/Components/ui/button"
 import Navbar from "@/Components/Navbar"
 import { connectToDeepgram, getAIResponseAudio } from "@/utils/deepgramConnection"
@@ -264,10 +264,6 @@ export default function ImmersiveTeacherPage() {
               <div className="absolute inset-0">
                 {energyLevel.filter((_, i) => (window.innerWidth < 640 ? i % 3 === 0 : true)).map((length, idx) => {
                   const angle = (idx / energyLevel.length) * 360
-                  const radians = (angle * Math.PI) / 180
-                  const x = Math.cos(radians)
-                  const y = Math.sin(radians)
-                  
                   return (
                     <motion.div
                       key={idx}
@@ -349,7 +345,7 @@ export default function ImmersiveTeacherPage() {
             
             {/* Topic bubbles floating around - fewer on mobile */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {["Physics", "Math", "Chemistry", "Biology", "History"].slice(0, window.innerWidth < 640 ? 3 : 5).map((topic, idx) => (
+              {["Physics", "Math", "Chemistry", "Biology", "History"].slice(0, window.innerWidth < 640 ? 3 : 5).map((topic) => (
                 <motion.div
                   key={topic}
                   className="absolute px-2 py-0.5 sm:px-3 sm:py-1 bg-purple-900/30 backdrop-blur-sm rounded-full text-[10px] sm:text-xs text-white border border-purple-500/30"

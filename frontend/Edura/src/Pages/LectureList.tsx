@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowLeft, Clock, Play, Video, Zap, Calendar, DollarSign, CheckCircle, AlertTriangle } from "lucide-react"
+import { ArrowLeft, Clock, Play, Video, Zap } from "lucide-react"
 import { Button } from "@/Components/ui/button"
 import { Progress } from "@/Components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs"
@@ -17,7 +17,7 @@ export default function CourseLecturesPage() {
   const [activeTab, setActiveTab] = useState("lectures");
   const { data, isLoading: lecturesLoading, error } = useSWR(
     "/get-course-lectures",
-    () => axios.get('http://localhost:3000/api/v1/get-course-lectures', { params: { courseId: id } }).then(res => res.data)
+    () => axios.get(`${process.env.VITE_BACKEND_URL}/api/v1/get-course-lectures`, { params: { courseId: id } }).then(res => res.data)
   );
 
   const progress = 50;
@@ -45,10 +45,7 @@ export default function CourseLecturesPage() {
     </div>
   }
 
-  // Mock data for the lectures - would be replaced with actual data from the contract
   const lectures = data?.lectures;
-
-
 
   return (
     <div className="min-h-screen bg-black text-white w-screen flex justify-center flex-col">
