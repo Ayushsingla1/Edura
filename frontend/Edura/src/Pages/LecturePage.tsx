@@ -140,7 +140,7 @@ export default function LecturePage() {
         try {
           const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/get-notes`, { params: { id: lectureId } });
           console.log(res.data);
-          setNotes(res.data);
+          setNotes(res.data.data);
         } catch (error) {
           console.log(error);
         }
